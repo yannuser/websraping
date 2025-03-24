@@ -16,10 +16,8 @@ This project is focused on web scraping to extract and process data from website
     ```bash
     git clone https://github.com/yannuser/webscraping.git
     ```
-2. Navigate to the project directory:
-    ```bash
-    cd webscraping
-    ```
+2. Open the project
+
 3. Install dependencies:
     ```bash
     pip install -r requirements.txt
@@ -35,5 +33,5 @@ This project is focused on web scraping to extract and process data from website
 
 
 ## Disclaimer
-This is an example you can modify to suit any website you'd like to scrape datas from
+This is an example you can modify to suit any website you'd like to scrape data from
 Ensure you comply with the terms of service of the websites you scrape. Unauthorized scraping may violate legal or ethical guidelines.
