@@ -1,3 +1,4 @@
+import json
 import sqlite3
 import os
 
@@ -28,3 +29,15 @@ def save_data_to_db(data):
         """, (book["title"], book["price"], book["rating"], book["image"], book["availability"]))
     conn.commit()
     conn.close()
+
+def save_data_to_csv(data):
+    os.makedirs("../data", exist_ok=True)  # Ensure the directory exists
+    with open("../data/books.csv", "w") as file:
+        file.write("title,price,rating,image,availability\n")
+        for book in data.values():
+            file.write(f"{book['title']},{book['price']},{book['rating']},{book['image']},{book['availability']}\n")
+
+def save_data_to_json(data):
+    os.makedirs("../data", exist_ok=True)  # Ensure the directory exists
+    with open("../data/books.json", "w") as file:
+        file.write(json.dumps(data, indent=4))

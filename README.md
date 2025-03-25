@@ -7,6 +7,27 @@ This project is focused on web scraping to extract and process data from website
 - Parse and clean the extracted data.
 - Save the data in various formats (e.g., CSV, JSON).
 
+scraping_project/
+├── src/
+│   ├── scrapers/          # Individual scrapers for specific websites
+│   │   ├── example_scraper.py
+│   │   └── another_scraper.py
+│   ├── utils/             # Utility functions (e.g., parsers, formatters)
+│   │   ├── http_client.py
+│   │   └── data_parser.py
+│   ├── services/          # Services for handling data (e.g., storage, APIs)
+│   │   ├── database_service.py
+│   │   └── file_service.py
+│   ├── config/            # Configuration files
+│   │   └── config.py
+│   ├── __init__.py        # Makes the `src` directory a package
+│   └── main.py            # Entry point of the application
+├── data/                  # Folder to store scraped data (optional. Will be created during the execution)
+├── .env                   # Environment variables
+├── requirements.txt       # Python dependencies
+├── README.md              # Documentation for the project
+└── setup.py               # Optional: For packaging the project
+
 ## Requirements
 - Python 3.x
 - Required libraries: `requests`, `beautifulsoup4`, `pandas`

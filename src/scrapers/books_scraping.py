@@ -4,15 +4,13 @@ from config.config import BASE_URL
 from services.database_service import save_data_to_db
 
 def scraping():
-    url = BASE_URL
-    
+    url = BASE_URL 
     database = {}
-    x=0
-    z=0
+    x = 0
+    global_counter = 0  # Initialize a global counter for unique keys
     while url:
-       
         response = requests.get(url)
-        print(f"\nScraping {url}...\n")
+        print(f"Scraping {url}")
         soup = BeautifulSoup(response.text, "html.parser")
         
         if response.status_code == 200:
@@ -25,17 +23,15 @@ def scraping():
             rating = [article.find('p', class_='star-rating')['class'][1] for article in article_container]
             image = [article.find('img')['src'] for article in article_container]
             availability = [article.find('p', class_='instock availability').get_text().strip() for article in article_container]
-
             for i in range(len(title)):
-                z+=1
-                print(f"Scraping book {z}...")
-                database[i] = {
+                database[global_counter] = {
                     "title": title[i],
                     "price": price[i],
                     "rating": rating[i],
                     "image": image[i],
                     "availability": availability[i]
                 }
+                global_counter += 1  # Increment the global counter for unique keys
         else:
             return f"Failed to fetch data: {response.status_code}"
         
@@ -46,7 +42,5 @@ def scraping():
         else:
             url = BASE_URL + next_page["href"] if next_page else None 
         x+=1 
-
-    save_data_to_db(database)
     return database
         
