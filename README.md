@@ -1,20 +1,7 @@
-# Web Scraping Project
-
-This project is focused on web scraping to extract and process data from websites.
-
-## Features
-- Extract data from web pages.
-- Parse and clean the extracted data.
-- Save the data in various formats (e.g., CSV, JSON).
-
-scraping_project/
+webscraping/
 ├── src/
 │   ├── scrapers/          # Individual scrapers for specific websites
-│   │   ├── example_scraper.py
-│   │   └── another_scraper.py
-│   ├── utils/             # Utility functions (e.g., parsers, formatters)
-│   │   ├── http_client.py
-│   │   └── data_parser.py
+│   │   ├── books_scraping.py
 │   ├── services/          # Services for handling data (e.g., storage, APIs)
 │   │   ├── database_service.py
 │   │   └── file_service.py
@@ -26,7 +13,15 @@ scraping_project/
 ├── .env                   # Environment variables
 ├── requirements.txt       # Python dependencies
 ├── README.md              # Documentation for the project
-└── setup.py               # Optional: For packaging the project
+
+# Web Scraping Project
+
+This project is focused on web scraping to extract and process data from websites.
+
+## Features
+- Extract data from web pages.
+- Parse and clean the extracted data.
+- Save the data in various formats (e.g., CSV, JSON).
 
 ## Requirements
 - Python 3.x
