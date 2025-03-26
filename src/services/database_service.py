@@ -13,7 +13,8 @@ def create_table():
             price TEXT,
             rating TEXT,
             image TEXT,
-            availability TEXT
+            availability TEXT,
+            description TEXT
         )
     """)
     conn.commit()
@@ -24,9 +25,9 @@ def save_data_to_db(data):
     cursor = conn.cursor()
     for book in data.values():
         cursor.execute("""
-            INSERT INTO books (title, price, rating, image, availability)
-            VALUES (?, ?, ?, ?, ?)
-        """, (book["title"], book["price"], book["rating"], book["image"], book["availability"]))
+            INSERT INTO books (title, price, rating, image, availability, description)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (book["title"], book["price"], book["rating"], book["image"], book["availability"], book["description"]))
     conn.commit()
     conn.close()
 
@@ -35,7 +36,7 @@ def save_data_to_csv(data):
     with open("../data/books.csv", "w") as file:
         file.write("title,price,rating,image,availability\n")
         for book in data.values():
-            file.write(f"{book['title']},{book['price']},{book['rating']},{book['image']},{book['availability']}\n")
+            file.write(f"{book['title']},{book['price']},{book['rating']},{book['image']},{book['availability'], {book['description']}}\n")
 
 def save_data_to_json(data):
     os.makedirs("../data", exist_ok=True)  # Ensure the directory exists
