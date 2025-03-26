@@ -34,7 +34,10 @@ def scraping():
                     description_response = requests.get(BASE_URL + link)
                 if description_response.status_code == 200:
                     description_soup = BeautifulSoup(description_response.text, "html.parser")
-                    desc = description_soup.find('article', class_='product_page').find('p', class_=None, attrs={}).get_text()
+                    try:
+                        desc = description_soup.find('article', class_='product_page').find('p', class_=None, attrs={}).get_text()
+                    except:
+                        desc = ''
                     description.append(desc.strip() if desc else '')
                 else:
                     if x>=1:
